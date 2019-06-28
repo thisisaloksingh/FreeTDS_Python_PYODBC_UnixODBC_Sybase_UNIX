@@ -1,0 +1,13 @@
+Step 1.
+ A. Install Unixodbc
+ B. To verify type odbcinst -j and odbcinst command
+ C. Configure your db details in odbcinst.ini file. 
+Step 3.
+  A. Find driver name like libtdsodbc.so
+  B. give the path of this file in odbcinst.ini file.
+  
+Note : Please make sure first you have installed and confuigured unixodbc then you are moving to freetds.
+Step 2.
+  A. Install FreeTDS or put the package in your location.
+  B. run this ./configure command in root directory of FreeTDS (Verify that configure is that location or not )
+  C. then 'make' and 'make install'
