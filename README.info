@@ -11,3 +11,38 @@ Step 2.
   A. Install FreeTDS or put the package in your location.
   B. run this ./configure command in root directory of FreeTDS (Verify that configure is that location or not )
   C. then 'make' and 'make install'
+===================================================================================================================================
+  Note : You might not have access to update odbcinst.ini file,so for that we have command with help of that we can update this file
+         with our data.
+         command : odbcinst -i -d -f ../template.ini
+         
+template.ini 
+-------------
+[FreeTDS]
+Description             = FreeTDS MSSQL
+Driver                  = /usr/local/lib/libtdsodbc.so
+#Setup                   = /usr/lib64/libtdsS.so
+UsageCount              = 1
+Trace=Yes
+
+====================================================================================================================================
+
+Python file which will connect with our Sybase DB :
+
+sybasedb.py
+------------
+#!/usr/bin/python
+
+import pyodbc
+conn = pyodbc.connect('DRIVER=FreeTDS;SERVER=host_name;PORT=8080;DATABASE=YOURDB;UID=DBUSER;PWD=****;TDS_Version=5.0;')
+cursor = conn.cursor()
+cursor.execute('select * from yourtable')
+for row in cursor.fetchall():
+    print (row)
+====================================================================================================================================
+
+
+         
+         
+         
+ 
